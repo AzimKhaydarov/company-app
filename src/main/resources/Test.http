@@ -1,0 +1,70 @@
+###
+POST http://localhost:9797/api/address
+Content-Type: application/json
+
+{
+  "street": "Choshtepa",
+  "homeNumber": "110C"
+}
+
+
+
+###
+GET http://localhost:9797/api/address/list
+
+
+###
+GET http://localhost:9797/api/address/byID/3
+
+
+###
+PUT http://localhost:9797/api/address/3
+Content-Type: application/json
+
+{
+  "street": "Choshtepa",
+  "homeNumber": "110D"
+}
+
+
+###
+DELETE http://localhost:9797/api/address/4
+
+###
+POST http://localhost:9797/api/company
+Content-Type: application/json
+
+{
+  "corpName": "LLC SHARK",
+  "directorName": "Azim Khaydarov",
+  "street": "Choshtepa",
+  "homeNumber": "110D"
+}
+
+
+
+###
+GET http://localhost:9797/api/company/list
+
+
+
+###
+GET http://localhost:9797/api/company/byID/2
+
+
+
+###
+PUT http://localhost:9797/api/company/4
+Content-Type: application/json
+
+{
+  "corpName": "LLC SHARK",
+  "directorName": "Azim Khaydarov",
+  "street": "Choshtepa",
+  "homeNumber": "110D"
+}
+
+
+
+###
+DELETE http://localhost:9797/api/company/1
