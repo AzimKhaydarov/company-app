@@ -18,7 +18,7 @@ public class WorkerController {
     @Autowired
     WorkerService workerService;
     @GetMapping("/list")
-    public HttpEntity<List<Worker>> getCompanies(){
+    public HttpEntity<List<Worker>> getWorkers(){
         List<Worker> workerList = workerService.getWorkerList();
         return ResponseEntity.ok(workerList);
     }
