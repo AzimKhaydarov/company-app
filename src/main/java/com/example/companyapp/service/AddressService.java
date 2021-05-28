@@ -26,9 +26,9 @@ public class AddressService {
     public ApiResponse editAddress(Address address, Integer id){
         Optional<Address> optionalAddress = addressRepository.findById(id);
         if(!optionalAddress.isPresent()) return new ApiResponse("Current address not found!", false);
+        Address address1 = optionalAddress.get();
         boolean existsByStreetAndHomeNumber = addressRepository.existsByStreetAndHomeNumber(address.getStreet(), address.getHomeNumber());
         if(existsByStreetAndHomeNumber) return new ApiResponse("Current address already exists!", false);
-        Address address1 = new Address();
         address1.setHomeNumber(address.getHomeNumber());
         address1.setStreet(address.getStreet());
         addressRepository.save(address1);

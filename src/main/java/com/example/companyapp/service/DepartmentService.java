@@ -38,7 +38,7 @@ public class DepartmentService {
         if(!optionalDepartment.isPresent()) return new ApiResponse("Current department not found!", false);
         boolean exists = departmentRepository.existsByNameAndCompany_Id(departmentDto.getName(),departmentDto.getCompanyId());
         if (exists) return new ApiResponse("Current department already exists!", false);
-        Department department1 = new Department();
+        Department department1 = optionalDepartment.get();
         department1.setName(departmentDto.getName());
         Optional<Company> optionalCompany = companyRepository.findById(departmentDto.getCompanyId());
         if(!optionalCompany.isPresent()) return new ApiResponse("Current company not found!", false);

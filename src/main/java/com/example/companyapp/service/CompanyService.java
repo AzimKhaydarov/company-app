@@ -42,10 +42,10 @@ public class CompanyService {
         if(!optionalCompany.isPresent()) return new ApiResponse("Current company not found!", false);
         boolean existsByCorpName = companyRepository.existsByCorpName(companyDto.getCorpName());
         if (existsByCorpName) return new ApiResponse("Current company already exists!", false);
-        Company company1 = new Company();
+        Company company1 = optionalCompany.get();
         company1.setCorpName(companyDto.getCorpName());
         company1.setDirectorName(companyDto.getDirectorName());
-        Address address1 = new Address();
+        Address address1 = company1.getAddress();
         address1.setStreet(companyDto.getStreet());
         address1.setHomeNumber(companyDto.getHomeNumber());
         company1.setAddress(address1);

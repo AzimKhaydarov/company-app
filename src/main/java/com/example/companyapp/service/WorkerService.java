@@ -48,10 +48,10 @@ public class WorkerService {
         if(!optionalWorker.isPresent()) return new ApiResponse("Current worker not found!", false);
         boolean exists = workerRepository.existsByNameAndPhoneNumber(workerDto.getName(), workerDto.getPhoneNumber());
         if (exists) return new ApiResponse("Current worker already exists!", false);
-        Worker worker1 = new Worker();
+        Worker worker1 = optionalWorker.get();
         worker1.setName(workerDto.getName());
         worker1.setPhoneNumber(workerDto.getPhoneNumber());
-        Address address1 = new Address();
+        worker1.getAddress()
         address1.setStreet(workerDto.getStreet());
         address1.setHomeNumber(workerDto.getHomeNumber());
         worker1.setAddress(address1);
