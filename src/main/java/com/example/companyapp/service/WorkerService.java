@@ -51,7 +51,7 @@ public class WorkerService {
         Worker worker1 = optionalWorker.get();
         worker1.setName(workerDto.getName());
         worker1.setPhoneNumber(workerDto.getPhoneNumber());
-        worker1.getAddress()
+        Address address1 = worker1.getAddress();
         address1.setStreet(workerDto.getStreet());
         address1.setHomeNumber(workerDto.getHomeNumber());
         worker1.setAddress(address1);
@@ -77,7 +77,9 @@ public class WorkerService {
     public ApiResponse deleteWorker(Integer id) {
         Optional<Worker> optionalWorker = workerRepository.findById(id);
         if (!optionalWorker.isPresent()) return new ApiResponse("Current worker not found!", false);
-        workerRepository.delete(optionalWorker.get());
+        Worker worker = optionalWorker.get();
+        addressRepository.delete(worker.getAddress());
+        workerRepository.delete(worker);
         return new ApiResponse("Selected worker deleted successfully!", true);
     }
 

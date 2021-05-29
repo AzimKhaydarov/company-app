@@ -68,6 +68,7 @@ public class CompanyService {
     public ApiResponse deleteCompany(Integer id) {
         Optional<Company> optionalCompany = companyRepository.findById(id);
         if (!optionalCompany.isPresent()) return new ApiResponse("Current company not found!", false);
+        addressRepository.delete(optionalCompany.get().getAddress());
         companyRepository.delete(optionalCompany.get());
         return new ApiResponse("Selected company deleted successfully!", true);
     }
